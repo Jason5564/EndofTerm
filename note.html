@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>筆記系統</title>
+  <link rel="stylesheet" href="note.css">
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="note-list">
+      <button class="new-note-btn" onclick="createNote()">新增筆記</button>
+      <ul id="notes">
+        <!-- 這裡將顯示筆記列表 -->
+      </ul>
+    </div>
+  </div>
+  <div class="main-content">
+    <div id="noteContent">
+      <!-- 這裡將顯示筆記的內容 -->
+    </div>
+    <div id="textStyleControls">
+      <label for="fontSize">文字大小:</label>
+      <select id="fontSize" onchange="changeFontSize()">
+        <option value="12px">小</option>
+        <option value="16px">中</option>
+        <option value="20px">大</option>
+      </select>
+      <label for="fontColor">文字顏色:</label>
+      <select id="fontColor" onchange="changeFontColor()">
+        <option value="black">黑色</option>
+        <option value="red">紅色</option>
+        <option value="blue">藍色</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="note.js"></script>
+</body>
+
+</html>

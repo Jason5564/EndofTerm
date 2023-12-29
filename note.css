@@ -1,0 +1,74 @@
+/* 样式文件 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    height: 100vh; /* 讓側邊欄佔滿整個頁面高度 */
+    background-color: #333;
+    color: #fff;
+}
+
+.note-list {
+    padding: 20px;
+    height: calc(100% - 50px); /* 減去新增筆記按鈕的高度 */
+    overflow-y: auto; /* 若筆記列表高於側邊欄，添加滾動條 */
+}
+
+.note-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.note-item:hover {
+    background-color: #444; /* 滑過時高亮顯示 */
+}
+
+button {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.new-note-btn {
+    background-color: #4CAF50;
+}
+
+.delete-note-btn {
+    background-color: #f44336;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.delete-note-btn:hover {
+    opacity: 0.8;
+}
+
+/* 新增這段代碼 */
+.delete-note-btn-container {
+    float: right;
+    margin-top: -5px; /* 調整按鈕位置 */
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+#noteContent textarea {
+    font-size: 16px; /* 設置文字大小 */
+    color: black; /* 設置文字顏色 */
+}
