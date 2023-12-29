@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+a {
+    text-decoration: none;
+    color: blue;
+}
+a:hover {
+    color: red;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    margin: 20px;
+}
+#searchInput {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+#searchInput:focus {
+    border-color: #666;
+}
