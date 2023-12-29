@@ -20,7 +20,7 @@
 <body class="bg-light">
     <div class="navbar">
         <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
-            <a href="index.php">Home</a>
+            <a href="index.php">首頁</a>
         </div>
 
         <div class="menuBtn" style="margin-left: auto; margin-top: 0">

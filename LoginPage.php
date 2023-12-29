@@ -17,7 +17,7 @@
 <body>
     <div class="navbar">
         <div class="menuBtn" style="margin-left: 25px;">
-            <a href="index.php">Home</a>
+            <a href="index.php">首頁</a>
         </div>
     </div>
 

@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])){
+    header("location: Login.php?error=Need to login first");
+    exit();
+}
+
+include "GetDataFromDB.php";
+include "conn.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +21,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="LinkCoursesPage.css">
     <script src="LinkCoursesPage.js"></script>
+    <link href="NavBar.css" rel="stylesheet"/>
 </head>
 <body>
 
+<div class="navbar">
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="index.php">首頁</a>
+    </div>
 
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="note.html">筆記</a>
+    </div>
 
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="LinkCoursesPage.php">課程連結</a>
+    </div>
+
+    <div class="menuBtn" style="margin-left: auto">
+        <a href="Logout.php" style="color: #ff4f4f">Logout</a>
+    </div>
+</div>
+
+<br>
 <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="搜尋學校名稱或課程內容...">
 
 <table border="1">
@@ -25,9 +54,6 @@
     </tr>
 
     <?php
-    session_start();
-    include "conn.php";
-
     // 從資料庫中選擇所需的資料
     $sql = "SELECT id, school, Course_Title, url FROM opening_course";
     $result = mysqli_query($conn, $sql);
