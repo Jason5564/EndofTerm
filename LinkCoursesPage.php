@@ -46,7 +46,7 @@ include "conn.php";
 <br>
 <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="搜尋學校名稱或課程內容...">
 
-<table border="1">
+<table border="1" style="margin-top: 10px">
     <tr>
         <th>學校名稱</th>
         <th>課程內容</th>
