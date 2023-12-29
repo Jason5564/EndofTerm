@@ -39,6 +39,7 @@ include "conn.php";
     </div>
 
     <div class="menuBtn" style="margin-left: auto">
+        <a><?php echo $_SESSION['id']; ?></a>
         <a href="Logout.php" style="color: #ff4f4f">Logout</a>
     </div>
 </div>

@@ -19,6 +19,18 @@
         <div class="menuBtn" style="margin-left: 25px;">
             <a href="index.php">首頁</a>
         </div>
+
+        <div class="menuBtn" style="margin-left: 25px;">
+            <a href="note.html">筆記</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: 25px;">
+            <a href="LinkCoursesPage.php">課程連結</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: auto">
+            <a href="Login.php" style="color: white">Login</a>
+        </div>
     </div>
 
     <div class="loginBlock center" style="margin-top: 150px">

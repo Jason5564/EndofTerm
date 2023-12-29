@@ -7,6 +7,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>註冊</title>
     <!-- 引入 Bootstrap 的 CSS 文件 -->
@@ -21,6 +24,14 @@
     <div class="navbar">
         <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
             <a href="index.php">首頁</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
+            <a href="note.html">筆記</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
+            <a href="LinkCoursesPage.php">課程連結</a>
         </div>
 
         <div class="menuBtn" style="margin-left: auto; margin-top: 0">
