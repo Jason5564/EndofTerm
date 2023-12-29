@@ -1,10 +1,3 @@
-/* 样式文件 */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-}
-
 .sidebar {
     height: 100vh;
     /* 讓側邊欄佔滿整個頁面高度 */
@@ -137,8 +130,6 @@ button:hover {
 }
 
 .content {
-    margin-top: 50px;
-    /* 保留空間避免被遮擋 */
     display: flex;
     flex: 1;
 }
