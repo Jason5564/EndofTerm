@@ -23,11 +23,19 @@ include "conn.php";
 </head>
 
 <body>
-<nav class="navigation">
-    <ul>
-        <li><a href="index.php">首頁</a></li>
-        <li><a href="LinkCoursesPage.php">課程連結</a></li>
-    </ul>
+<nav class="navbar" style="position: fixed; ">
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="index.php">筆記</a>
+    </div>
+
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="LinkCoursesPage.php">課程連結</a>
+    </div>
+
+    <div class="menuBtn" style="margin-left: auto">
+        <a><?php echo $_SESSION['id']; ?></a>
+        <a href="Logout.php" style="color: #ff4f4f">Logout</a>
+    </div>
 </nav>
 <div class="content">
     <div class="sidebar">
