@@ -36,7 +36,14 @@ function displayNotes() {
     });
 }
 
-// 顯示選擇的筆記內容
+// 在更新筆記內容的函數中，使用 Local Storage 儲存內容
+function updateNoteContent(note, updatedContent) {
+    note.content = updatedContent; // 更新特定筆記的內容
+    // 將內容存儲到 Local Storage
+    localStorage.setItem('noteContent_' + note.id, updatedContent);
+}
+
+// 在顯示筆記內容的函數中，從 Local Storage 讀取內容
 function displayNoteContent(note) {
     const noteContent = document.getElementById('noteContent');
     noteContent.innerHTML = ''; // 清空內容
@@ -47,8 +54,10 @@ function displayNoteContent(note) {
     textarea.cols = '80';
     textarea.style.fontSize = '16px'; // 初始化文字大小
     textarea.style.color = 'black'; // 初始化文字顏色
-    textarea.addEventListener('input', function() {
-        updateNoteContent(note, this.value); // 新增的筆記內容儲存在預設的筆記對象中
+    textarea.value = localStorage.getItem('noteContent_' + note.id) || note.content; // 讀取 Local Storage 內容或使用筆記的內容
+
+    textarea.addEventListener('input', function () {
+        updateNoteContent(note, this.value); // 更新筆記內容並儲存到 Local Storage
     });
 
     const addTextBtn = document.createElement('button');
@@ -84,11 +93,6 @@ function displayNoteContent(note) {
     noteContent.appendChild(textareaContainer);
 }
 
-// 更新筆記內容
-function updateNoteContent(note, updatedContent) {
-    note.content = updatedContent; // 更新特定筆記的內容
-}
-
 // 刪除特定 ID 的筆記
 function deleteNoteById(id) {
     notes = notes.filter(note => note.id !== id);
@@ -120,7 +124,7 @@ function addTextArea() {
     textarea.cols = '80';
     textarea.style.fontSize = '16px'; // 初始化文字大小
     textarea.style.color = 'black'; // 初始化文字顏色
-    textarea.addEventListener('input', function() {
+    textarea.addEventListener('input', function () {
         updateNoteContent({ id: null, content: "" }, this.value); // 新增的筆記內容儲存在預設的筆記對象中
     });
 
@@ -131,7 +135,7 @@ function addTextArea() {
     const deleteTextBtn = document.createElement('button');
     deleteTextBtn.textContent = '刪除文字';
     deleteTextBtn.style.backgroundColor = 'red'; // 設置背景色為紅色
-    deleteTextBtn.onclick = function() {
+    deleteTextBtn.onclick = function () {
         noteContent.removeChild(textareaContainer); // 刪除 textarea
     };
 
