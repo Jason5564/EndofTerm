@@ -13,6 +13,7 @@ function validate($data){
 if (isset($_POST['id']) && isset($_POST['password'])) {
     $id = validate($_POST['id']);
     $password = validate($_POST['password']);
+    $captcha = validate($_POST['captcha']);
 
     if (empty($id)){
         header("Location: LoginPage.php?error=id is required");
@@ -26,17 +27,23 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
             if (password_verify($password, $row['hash_pwd'])) {
-                echo "Logged in!";
-                $_SESSION['id'] = $row['id'];
+                if ($captcha === "3n3D") {
+                    echo "Logged in!";
+                    $_SESSION['id'] = $row['id'];
 
-                header("Location: index.php");
-                exit();
+                    header("Location: index.php");
+                    exit();
+                }
+                else {
+                    header("Location: LoginPage.php?error=captcha error");
+                    exit();
+                }
             }else{
-                header("Location: LoginPage.php?error=Incorect id or password");
+                header("Location: LoginPage.php?error=wrong id or password");
                 exit();
             }
         }else{
-            header("Location: LoginPage.php?error=Incorect id or password");
+            header("Location: LoginPage.php?error=wrong id or password");
             exit();
         }
     }

@@ -13,8 +13,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入 reCAPTCHA 的 JavaScript 鏈接 -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <link rel="stylesheet" href="NavBar.css">
 </head>
+
 <body class="bg-light">
+    <div class="navbar">
+        <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
+            <a href="index.php">Home</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: auto; margin-top: 0">
+            <a href="Login.php" style="color: white">Login</a>
+        </div>
+    </div>
 
     <div class="container mt-5">
         <div class="card">

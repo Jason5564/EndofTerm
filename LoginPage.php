@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>登入</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     <div class="loginBlock center" style="margin-top: 150px">
         <div style="font-size: 35px; font-family: 'Noto Sans TC', sans-serif; font-weight: bold; color: white; text-align: center; letter-spacing: 6px;">
-            LOGIN
+            登入
         </div>
 
         <form action="Login.php" method="post" class="loginForm">
@@ -31,13 +31,23 @@
                 <p class="error" style="color: #ff4f4f; text-align: center; font-family: 'Noto Sans TC', sans-serif;"><?php echo $_GET['error']; ?></p>
             <?php } ?>
 
+            <br>
             <input type="text" name="id", placeholder="id" required="required" class="center inputBox">
             <br>
+
             <input type="password" name="password", placeholder="Password" required="required" class="center inputBox">
             <br>
 
-            <input type="submit" value="Submit" class="center btnSubmit">
+            <input type="text" name="captcha", placeholder="請輸入驗證碼" required="required" class="center inputBox">
+            <br>
 
+            <img src="Captcha/3n3D.jpg" width="30%" height="15%" class="center">
+            <br>
+
+            <input type="submit" value="Login" class="center btnSubmit">
+            <br>
+
+            <a href="register.php" style="font-weight: bold; color: white; text-align: center; display:block">註冊</a>
         </form>
     </div>
 </body>
