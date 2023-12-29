@@ -21,32 +21,38 @@ include "conn.php";
 </head>
 
 <body>
-    <nav class="navigation">
-        <ul>
-            <li><a href="index.php">首頁</a></li>
-            <li><a href="LinkCoursesPage.php">課程連結</a></li>
-        </ul>
-    </nav>
-
-    <body>
-        <div class="content">
-            <div class="sidebar">
-                <div class="note-list">
-                    <button class="new-note-btn" onclick="createNote()">新增筆記</button>
-                    <ul id="notes">
-                        <!-- 這裡將顯示筆記列表 -->
-                    </ul>
-                </div>
-            </div>
-            <div class="main-content">
-                <div id="noteContent">
-                    <!-- 這裡將顯示筆記的內容 -->
-                </div>
-            </div>
+    <div class="navbar">
+        <div class="menuBtn" style="margin-left: 25px;">
+            <a href="index.php">首頁</a>
         </div>
 
-    </body>
+        <div class="menuBtn" style="margin-left: 25px;">
+            <a href="LinkCoursesPage.php">課程連結</a>
+        </div>
 
-    <script src="note.js"></script>
+        <div class="menuBtn" style="margin-left: auto">
+            <a href="Logout.php" style="color: #ff4f4f">Logout</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="note-list">
+                <button class="new-note-btn" onclick="createNote()">新增筆記</button>
+                <ul id="notes">
+                    <!-- 這裡將顯示筆記列表 -->
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="noteContent">
+                <!-- 這裡將顯示筆記的內容 -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="note.js"></script>
 
 </html>
