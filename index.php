@@ -23,7 +23,7 @@ include "conn.php";
 </head>
 
 <body>
-<nav class="navbar" style="position: fixed; ">
+<div class="navbar">
     <div class="menuBtn" style="margin-left: 25px;">
         <a href="index.php">筆記</a>
     </div>
@@ -36,7 +36,8 @@ include "conn.php";
         <a><?php echo $_SESSION['id']; ?></a>
         <a href="Logout.php" style="color: #ff4f4f">Logout</a>
     </div>
-</nav>
+</div>
+
 <div class="content">
     <div class="sidebar">
         <div class="note-list">
