@@ -27,10 +27,6 @@
         </div>
 
         <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
-            <a href="note.html">筆記</a>
-        </div>
-
-        <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
             <a href="LinkCoursesPage.php">課程連結</a>
         </div>
 
