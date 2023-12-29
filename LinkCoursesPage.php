@@ -50,7 +50,7 @@ include "conn.php";
     <tr>
         <th>學校名稱</th>
         <th>課程內容</th>
-        <th>連結</th>
+        <th></th>
     </tr>
 
     <?php
