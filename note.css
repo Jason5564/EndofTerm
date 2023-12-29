@@ -7,6 +7,7 @@ body {
 
 .sidebar {
     height: 100vh; /* 讓側邊欄佔滿整個頁面高度 */
+    width: 250px; /* 這裡調整選單的寬度 */
     background-color: #333;
     color: #fff;
 }
@@ -65,11 +66,13 @@ button:hover {
 
 .main-content {
     flex: 1;
+    display: flex;
     padding: 20px;
 }
 
 #noteContent {
     width: calc(100% - 200px); /* 設置 textarea 寬度，這裡假設左側 sidebar 寬度為 200px */
+    flex: 1; /* 填充剩餘空間 */
     overflow-y: scroll; /* 允許垂直滾動 */
 }
 
@@ -78,7 +81,47 @@ button:hover {
 }
 
 #noteContent textarea {
-    width: 90%; /* 讓 textarea 佔據 noteContent 的整個寬度 */
+    width: 95%; /* 讓 textarea 佔據 noteContent 的整個寬度 */
     font-size: 16px; /* 設置文字大小 */
     color: black; /* 設置文字顏色 */
 }
+
+.navigation {
+    position: fixed; /* 固定在網頁上方 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    z-index: 999; /* 確保位於最上層 */
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+}
+
+.navigation a:hover {
+    color: #000;
+}
+.navigation a:hover {
+    color: #666; /* 滑過時的文字顏色 */
+}
+
+.content {
+    margin-top: 50px; /* 保留空間避免被遮擋 */
+    display: flex;
+    flex: 1;
+}
+
