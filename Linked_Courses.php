@@ -1,6 +1,7 @@
 <?php
-    session_start();
-    include("conn.php");
+
+session_start();
+include "conn.php";
 
 // 從資料庫中選擇所需的資料
 $sql = "SELECT id ,school, course_name, course_link FROM opening_course";
