@@ -40,17 +40,48 @@ function displayNotes() {
 function displayNoteContent(note) {
     const noteContent = document.getElementById('noteContent');
     noteContent.innerHTML = ''; // 清空內容
+    const textareaContainer = document.createElement('div');
+
     const textarea = document.createElement('textarea');
-    textarea.value = note.content;
     textarea.rows = '20';
     textarea.cols = '80';
-    textarea.style.fontSize = '16px'; // 設置文字大小
-    textarea.style.color = 'black'; // 設置文字顏色
-    textarea.id = 'noteTextarea'; // 添加 ID
+    textarea.style.fontSize = '16px'; // 初始化文字大小
+    textarea.style.color = 'black'; // 初始化文字顏色
     textarea.addEventListener('input', function() {
-        updateNoteContent(note, this.value); // 傳遞整個筆記對象並更新內容
+        updateNoteContent(note, this.value); // 新增的筆記內容儲存在預設的筆記對象中
     });
-    noteContent.appendChild(textarea);
+
+    const addTextBtn = document.createElement('button');
+    addTextBtn.textContent = '新增文字';
+    addTextBtn.onclick = addTextArea; // 點擊新增文字按鈕會再次新增 textarea
+
+    const fontSizeSelect = document.createElement('select');
+    fontSizeSelect.id = 'fontSize';
+    fontSizeSelect.onchange = changeFontSize;
+    const fontSizeOptions = ['12px', '16px', '20px'];
+    fontSizeOptions.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option;
+        optionElement.textContent = option;
+        fontSizeSelect.appendChild(optionElement);
+    });
+
+    const fontColorSelect = document.createElement('select');
+    fontColorSelect.id = 'fontColor';
+    fontColorSelect.onchange = changeFontColor;
+    const fontColorOptions = ['black', 'red', 'blue'];
+    fontColorOptions.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option;
+        optionElement.textContent = option;
+        fontColorSelect.appendChild(optionElement);
+    });
+
+    textareaContainer.appendChild(textarea);
+    textareaContainer.appendChild(addTextBtn);
+    textareaContainer.appendChild(fontSizeSelect);
+    textareaContainer.appendChild(fontColorSelect);
+    noteContent.appendChild(textareaContainer);
 }
 
 // 更新筆記內容
@@ -67,18 +98,72 @@ function deleteNoteById(id) {
 
 // 更改文字大小
 function changeFontSize() {
-    const noteTextarea = document.getElementById('noteTextarea');
+    const noteContent = document.getElementById('noteContent');
     const fontSizeSelect = document.getElementById('fontSize');
-    noteTextarea.style.fontSize = fontSizeSelect.value;
+    noteContent.querySelector('textarea').style.fontSize = fontSizeSelect.value;
 }
 
 // 更改文字顏色
 function changeFontColor() {
-    const noteTextarea = document.getElementById('noteTextarea');
+    const noteContent = document.getElementById('noteContent');
     const fontColorSelect = document.getElementById('fontColor');
-    noteTextarea.style.color = fontColorSelect.value;
+    noteContent.querySelector('textarea').style.color = fontColorSelect.value;
 }
 
+// 新增文字區域
+function addTextArea() {
+    const noteContent = document.getElementById('noteContent');
+    const textareaContainer = document.createElement('div');
+
+    const textarea = document.createElement('textarea');
+    textarea.rows = '20';
+    textarea.cols = '80';
+    textarea.style.fontSize = '16px'; // 初始化文字大小
+    textarea.style.color = 'black'; // 初始化文字顏色
+    textarea.addEventListener('input', function() {
+        updateNoteContent({ id: null, content: "" }, this.value); // 新增的筆記內容儲存在預設的筆記對象中
+    });
+
+    const addTextBtn = document.createElement('button');
+    addTextBtn.textContent = '新增文字';
+    addTextBtn.onclick = addTextArea; // 點擊新增文字按鈕會再次新增 textarea
+
+    const deleteTextBtn = document.createElement('button');
+    deleteTextBtn.textContent = '刪除文字';
+    deleteTextBtn.style.backgroundColor = 'red'; // 設置背景色為紅色
+    deleteTextBtn.onclick = function() {
+        noteContent.removeChild(textareaContainer); // 刪除 textarea
+    };
+
+    const fontSizeSelect = document.createElement('select');
+    fontSizeSelect.id = 'fontSize';
+    fontSizeSelect.onchange = changeFontSize;
+    const fontSizeOptions = ['12px', '16px', '20px'];
+    fontSizeOptions.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option;
+        optionElement.textContent = option;
+        fontSizeSelect.appendChild(optionElement);
+    });
+
+    const fontColorSelect = document.createElement('select');
+    fontColorSelect.id = 'fontColor';
+    fontColorSelect.onchange = changeFontColor;
+    const fontColorOptions = ['black', 'red', 'blue'];
+    fontColorOptions.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option;
+        optionElement.textContent = option;
+        fontColorSelect.appendChild(optionElement);
+    });
+
+    textareaContainer.appendChild(textarea);
+    textareaContainer.appendChild(addTextBtn);
+    textareaContainer.appendChild(deleteTextBtn); // 將刪除文字按鈕加入 textarea 容器
+    textareaContainer.appendChild(fontSizeSelect);
+    textareaContainer.appendChild(fontColorSelect);
+    noteContent.appendChild(textareaContainer);
+}
 // 新增筆記
 function createNote() {
     const newNote = { id: notes.length + 1, content: '新的筆記內容' };
