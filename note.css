@@ -68,7 +68,17 @@ button:hover {
     padding: 20px;
 }
 
+#noteContent {
+    width: calc(100% - 200px); /* 設置 textarea 寬度，這裡假設左側 sidebar 寬度為 200px */
+    overflow-y: scroll; /* 允許垂直滾動 */
+}
+
+#noteContent div {
+    margin-bottom: 10px; /* 調整每個 textarea 區域之間的間距 */
+}
+
 #noteContent textarea {
+    width: 90%; /* 讓 textarea 佔據 noteContent 的整個寬度 */
     font-size: 16px; /* 設置文字大小 */
     color: black; /* 設置文字顏色 */
 }
