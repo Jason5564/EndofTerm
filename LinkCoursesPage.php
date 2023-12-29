@@ -9,8 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="LinkCoursesPage.css">
+    <script src="LinkCoursesPage.js"></script>
 </head>
 <body>
+
+
+
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="搜尋學校名稱或課程內容...">
 
 <table border="1">
     <tr>
