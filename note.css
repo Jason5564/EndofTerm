@@ -6,16 +6,20 @@ body {
 }
 
 .sidebar {
-    height: 100vh; /* 讓側邊欄佔滿整個頁面高度 */
-    width: 250px; /* 這裡調整選單的寬度 */
+    height: 100vh;
+    /* 讓側邊欄佔滿整個頁面高度 */
+    width: 250px;
+    /* 這裡調整選單的寬度 */
     background-color: #333;
     color: #fff;
 }
 
 .note-list {
     padding: 20px;
-    height: calc(100% - 50px); /* 減去新增筆記按鈕的高度 */
-    overflow-y: auto; /* 若筆記列表高於側邊欄，添加滾動條 */
+    height: calc(100% - 50px);
+    /* 減去新增筆記按鈕的高度 */
+    overflow-y: auto;
+    /* 若筆記列表高於側邊欄，添加滾動條 */
 }
 
 .note-item {
@@ -24,7 +28,8 @@ body {
 }
 
 .note-item:hover {
-    background-color: #444; /* 滑過時高亮顯示 */
+    background-color: #444;
+    /* 滑過時高亮顯示 */
 }
 
 button {
@@ -61,7 +66,8 @@ button:hover {
 /* 新增這段代碼 */
 .delete-note-btn-container {
     float: right;
-    margin-top: -5px; /* 調整按鈕位置 */
+    margin-top: -5px;
+    /* 調整按鈕位置 */
 }
 
 .main-content {
@@ -71,29 +77,39 @@ button:hover {
 }
 
 #noteContent {
-    width: calc(100% - 200px); /* 設置 textarea 寬度，這裡假設左側 sidebar 寬度為 200px */
-    flex: 1; /* 填充剩餘空間 */
-    overflow-y: scroll; /* 允許垂直滾動 */
+    width: calc(100% - 200px);
+    /* 設置 textarea 寬度，這裡假設左側 sidebar 寬度為 200px */
+    flex: 1;
+    /* 填充剩餘空間 */
+    overflow-y: scroll;
+    /* 允許垂直滾動 */
 }
 
 #noteContent div {
-    margin-bottom: 10px; /* 調整每個 textarea 區域之間的間距 */
+    margin-bottom: 10px;
+    /* 調整每個 textarea 區域之間的間距 */
 }
 
 #noteContent textarea {
-    width: 95%; /* 讓 textarea 佔據 noteContent 的整個寬度 */
-    font-size: 16px; /* 設置文字大小 */
-    color: black; /* 設置文字顏色 */
+    width: 95%;
+    /* 讓 textarea 佔據 noteContent 的整個寬度 */
+    font-size: 16px;
+    /* 設置文字大小 */
+    color: black;
+    /* 設置文字顏色 */
 }
 
 .navigation {
-    position: fixed; /* 固定在網頁上方 */
+    position: fixed;
+    /* 固定在網頁上方 */
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f0f0f0;
+    background-color: #2A475C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
-    z-index: 999; /* 確保位於最上層 */
+    z-index: 999;
+    /* 確保位於最上層 */
 }
 
 .navigation ul {
@@ -108,20 +124,21 @@ button:hover {
 }
 
 .navigation a {
+    color: white;
+    font-size: 18px;
+    font-family: 'Noto Sans TC', sans-serif;
     text-decoration: none;
-    color: #333;
+    box-sizing: border-box;
+    padding: 10px 10px 12px 10px;
 }
 
 .navigation a:hover {
-    color: #000;
-}
-.navigation a:hover {
-    color: #666; /* 滑過時的文字顏色 */
+    background-color: #375672;
 }
 
 .content {
-    margin-top: 50px; /* 保留空間避免被遮擋 */
+    margin-top: 50px;
+    /* 保留空間避免被遮擋 */
     display: flex;
     flex: 1;
 }
-
