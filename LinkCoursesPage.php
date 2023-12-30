@@ -34,6 +34,10 @@ include "conn.php";
         <a href="LinkCoursesPage.php">課程連結</a>
     </div>
 
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="qa_show.php">問題討論區</a>
+    </div>
+
     <div class="menuBtn" style="margin-left: auto">
         <a><?php echo $_SESSION['id']; ?></a>
         <a href="Logout.php" style="color: #ff4f4f">Logout</a>

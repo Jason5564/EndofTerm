@@ -1,7 +1,10 @@
 <?php
     include("conn.php");
     session_start();
-
+    if(!isset($_SESSION['id'])){
+        header("location: Login.php?error=Need to login first");
+        exit();
+    }
 
     header('X-Content-Type-Options: nosniff');
 
@@ -12,6 +15,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="NavBar.css"/>
     <title>QA-Show</title>
     <!-- 引入 Bootstrap 的 CSS 文件 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -28,20 +35,24 @@
 </style>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse">
-
-            <a class="navbar-brand" href="#">Navbar</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item"><a class="nav-link" href="index.php">HOME</a></li>
-                <li class="nav-item"><a class="nav-link" href="qa_show.php">qa_show</a></li>
-                <li class="nav-item ml-auto"><a class="nav-link" href="Logout.php">LOGOUT</a></li>
-            </ul>
-            
+    <div class="navbar">
+        <div class="menuBtn" style="margin-left: 25px; margin-top: 0;">
+            <a href="index.php">筆記</a>
         </div>
-            
-    </nav>
+
+        <div class="menuBtn" style="margin-left: 25px; margin-top: 0;">
+            <a href="LinkCoursesPage.php">課程連結</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: 25px; margin-top: 0;">
+            <a href="qa_show.php">問題討論區</a>
+        </div>
+
+        <div class="menuBtn" style="margin-left: auto; margin-top: 0;">
+            <a style="color: white;"><?php echo $_SESSION['id']; ?></a>
+            <a href="Logout.php" style="color: #ff4f4f">Logout</a>
+        </div>
+    </div>
     
     <div class="container mt-5">
         
