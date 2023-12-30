@@ -16,6 +16,8 @@
     <!-- 引入 Bootstrap 的 CSS 文件 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="NavBar.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="NavBar.css">
 </head>
 <script>
     
@@ -29,19 +31,24 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse">
+<div class="navbar">
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="index.php">筆記</a>
+    </div>
 
-            <a class="navbar-brand" href="#">Navbar</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item"><a class="nav-link" href="index.php">HOME</a></li>
-                <li class="nav-item"><a class="nav-link" href="qa_show.php">qa_show</a></li>
-                <li class="nav-item ml-auto"><a class="nav-link" href="Logout.php">LOGOUT</a></li>
-            </ul>
-            
-        </div>
-            
-    </nav>
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="LinkCoursesPage.php">課程連結</a>
+    </div>
+
+    <div class="menuBtn" style="margin-left: 25px;">
+        <a href="qa_show.php">QA</a>
+    </div>
+
+    <div class="menuBtn" style="margin-left: auto">
+        <a><?php echo $_SESSION['id']; ?></a>
+        <a href="Logout.php" style="color: #ff4f4f">Logout</a>
+    </div>
+</div>
     
     <div class="container mt-5">
         
