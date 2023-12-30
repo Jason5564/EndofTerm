@@ -6,6 +6,16 @@ let notes = [
     { id: 2, content: "" }
 ];
 
+// 新增筆記
+function createNote() {
+    const noteName = prompt("請輸入筆記名稱"); // 使用 prompt 提示输入框来输入笔记名称
+    if (noteName) {
+        const newNote = { id: notes.length + 1, name: noteName, content: '' }; // 存储笔记名称
+        notes.push(newNote);
+        displayNotes(); // 重新显示笔记列表
+    }
+}
+
 // 顯示筆記列表
 function displayNotes() {
     const notesList = document.getElementById('notes');
@@ -13,7 +23,7 @@ function displayNotes() {
 
     notes.forEach(note => {
         const li = document.createElement('li');
-        li.textContent = `筆記 ${note.id}`;
+        li.textContent = `${note.name || note.id}`; // 显示笔记名称
 
         li.classList.add('note-item'); // 新增 class
 
@@ -35,6 +45,7 @@ function displayNotes() {
         notesList.appendChild(li);
     });
 }
+
 
 // 在更新筆記內容的函數中，使用 Local Storage 儲存內容
 function updateNoteContent(note, updatedContent) {
@@ -124,8 +135,10 @@ function addTextArea() {
     textarea.cols = '80';
     textarea.style.fontSize = '16px'; // 初始化文字大小
     textarea.style.color = 'black'; // 初始化文字顏色
+    textarea.value = localStorage.getItem('tempNoteContent') || ''; // 从 Local Storage 获取内容
+
     textarea.addEventListener('input', function () {
-        updateNoteContent({ id: null, content: "" }, this.value); // 新增的筆記內容儲存在預設的筆記對象中
+        localStorage.setItem('tempNoteContent', this.value); // 将内容保存到 Local Storage
     });
 
     const addTextBtn = document.createElement('button');
@@ -137,6 +150,7 @@ function addTextArea() {
     deleteTextBtn.style.backgroundColor = 'red'; // 設置背景色為紅色
     deleteTextBtn.onclick = function () {
         noteContent.removeChild(textareaContainer); // 刪除 textarea
+        localStorage.removeItem('tempNoteContent'); // 移除 Local Storage 中的内容
     };
 
     const fontSizeSelect = document.createElement('select');
@@ -168,13 +182,6 @@ function addTextArea() {
     textareaContainer.appendChild(fontColorSelect);
     noteContent.appendChild(textareaContainer);
 }
-// 新增筆記
-function createNote() {
-    const newNote = { id: notes.length + 1, content: '新的筆記內容' };
-    notes.push(newNote);
-    displayNotes();
-}
-
 
 // 初始化
 let editNoteId = null; // 記錄被選中的筆記
