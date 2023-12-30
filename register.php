@@ -29,6 +29,9 @@
         <div class="menuBtn" style="margin-left: 25px; margin-top: 0">
             <a href="LinkCoursesPage.php">課程連結</a>
         </div>
+        <div class="menuBtn" style="margin-left: 25px;margin-top: 0">
+            <a href="qa_show.php">問題討論區</a>
+        </div>
 
         <div class="menuBtn" style="margin-left: auto; margin-top: 0">
             <a href="Login.php" style="color: white">Login</a>
