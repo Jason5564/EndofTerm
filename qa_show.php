@@ -1,11 +1,14 @@
 <?php
     include("conn.php");
     session_start();
+    if(!isset($_SESSION['id'])){
+        header("location: Login.php?error=Need to login first");
+        exit();
+    }
 
+        header('X-Content-Type-Options: nosniff');
 
-    header('X-Content-Type-Options: nosniff');
-
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
