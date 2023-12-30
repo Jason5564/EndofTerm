@@ -35,7 +35,7 @@ include "conn.php";
     </div>
 
     <div class="menuBtn" style="margin-left: 25px;">
-        <a href="qa_show.php">QA</a>
+        <a href="qa_show.php">問題討論區</a>
     </div>
 
     <div class="menuBtn" style="margin-left: auto">
