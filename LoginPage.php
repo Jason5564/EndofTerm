@@ -27,10 +27,6 @@
             <a href="qa_show.php">問題討論區</a>
         </div>
 
-        <div class="menuBtn" style="margin-left: 25px;">
-            <a href="qa_show.php">問題討論區</a>
-        </div>
-
         <div class="menuBtn" style="margin-left: auto">
             <a href="Login.php" style="color: white">Login</a>
         </div>
