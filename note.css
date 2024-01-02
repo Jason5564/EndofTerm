@@ -129,7 +129,30 @@ button:hover {
     background-color: #375672;
 }
 
-.content {
+.content1 {
     display: flex;
     flex: 1;
+}
+
+/* 隱藏 checkbox */
+.collapse-checkbox {
+    display: none;
+}
+
+/* 設置折疊項目標籤的樣式 */
+.collapse-label {
+    display: block;
+    padding: 10px;
+    background-color: #333;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.collapse-label:hover {
+    background-color: #375672;
+}
+
+/* 設置折疊內容的初始狀態 */
+.collapse-content {
+    display: none;
 }

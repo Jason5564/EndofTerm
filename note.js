@@ -1,49 +1,96 @@
 // JavaScript 文件
 
-// 假設筆記的內容以物件形式存儲
-let notes = [
-    { id: 1, content: "" }, // 初始化內容為空字串
-    { id: 2, content: "" }
+
+let notebooks = [
+    { name: "筆記本1", notesLists: [{ id: 1, name: "1", content: "" }, { id: 2, name: "22", content: "" }] },
+    { name: "筆記本2", notesLists: [{ id: 3, name: "333", content: "" }, { id: 4, name: "4444", content: "" }] }
 ];
 
-// 新增筆記
-function createNote() {
-    const noteName = prompt("請輸入筆記名稱"); // 使用 prompt 提示输入框来输入笔记名称
+function createNote(index) {
+    const noteName = prompt("請輸入筆記名稱");
     if (noteName) {
-        const newNote = { id: notes.length + 1, name: noteName, content: '' }; // 存储笔记名称
-        notes.push(newNote);
-        displayNotes(); // 重新显示笔记列表
+        const selectedNotebookIndex = 0;
+        const newNote = { id: notebooks[selectedNotebookIndex].notesLists.length + 1, name: noteName, content: '' };
+        notebooks[selectedNotebookIndex].notesLists.push(newNote);
+        displayNotes();
     }
+}
+
+
+function showandhide(id) {
+    var x = document.getElementById('collapse-content' + id);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    console.log('这个新的 div 被点击了！');
+}
+
+function displayNoteBooks() {
+    const accordionContainer = document.getElementById('accordion');
+    accordionContainer.innerHTML = '';
+
+    for (let i = 0; i < notebooks.length; i++) {
+        const newCollapse = document.createElement('div');
+        newCollapse.innerHTML = `
+            <input type="checkbox" id="collapse${i}" class="collapse-checkbox">
+            <label for="collapse${i}" onclick="showandhide(${i})" class="collapse-label">${notebooks[i].name}</label>
+            <div class="collapse-content" id="collapse-content${i}">
+                <ul id="notes${i}">
+                    <!-- 这里将显示笔记列表 -->
+                </ul>
+            </div>
+        `;
+        accordionContainer.appendChild(newCollapse);
+    }
+}
+
+function createNotebook() {
+    const noteName = prompt("請輸入筆記本名稱");
+
+    const newNotebook = {
+        name: noteName,
+        notesLists: [{ id: 5, name: "55555", content: "" }]
+    };
+
+    notebooks.push(newNotebook);
+    displayNoteBooks();
+    displayNotes();
+    displayNoteContent('');
 }
 
 // 顯示筆記列表
 function displayNotes() {
-    const notesList = document.getElementById('notes');
-    notesList.innerHTML = '';
+    for (let i = 0; i < notebooks.length; i++) {
+        const notesList = document.getElementById('notes' + i);
+        notesList.innerHTML = '';
 
-    notes.forEach(note => {
-        const li = document.createElement('li');
-        li.textContent = `${note.name || note.id}`; // 显示笔记名称
+        const notebook = notebooks[i];
+        notebook.notesLists.forEach(note => {
+            const li = document.createElement('li');
+            li.textContent = `${note.name}`; // 显示笔记名称
 
-        li.classList.add('note-item'); // 新增 class
+            li.classList.add('note-item'); // 新增 class
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.className = 'delete-note-btn';
-        deleteBtn.textContent = '刪除';
-        deleteBtn.onclick = () => deleteNoteById(note.id);
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-note-btn';
+            deleteBtn.textContent = '刪除';
+            deleteBtn.onclick = () => deleteNoteFromNotebook(i, note.id - 1);
 
-        const deleteBtnContainer = document.createElement('div');
-        deleteBtnContainer.classList.add('delete-note-btn-container'); // 新增 class
-        deleteBtnContainer.appendChild(deleteBtn);
+            const deleteBtnContainer = document.createElement('div');
+            deleteBtnContainer.classList.add('delete-note-btn-container'); // 新增 class
+            deleteBtnContainer.appendChild(deleteBtn);
 
-        li.appendChild(deleteBtnContainer);
-        li.onclick = () => {
-            displayNoteContent(note); // 傳遞整個筆記對象
-            editNoteId = note.id; // 儲存被點擊的筆記 ID
-        };
+            li.appendChild(deleteBtnContainer);
+            li.onclick = () => {
+                displayNoteContent(note); // 傳遞整個筆記對象
+                editNoteId = note.id; // 儲存被點擊的筆記 ID
+            };
 
-        notesList.appendChild(li);
-    });
+            notesList.appendChild(li);
+        });
+    }
 }
 
 
@@ -72,8 +119,8 @@ function displayNoteContent(note) {
     });
 
     const addTextBtn = document.createElement('button');
-    addTextBtn.textContent = '新增文字';
-    addTextBtn.onclick = addTextArea; // 點擊新增文字按鈕會再次新增 textarea
+    addTextBtn.textContent = '新增筆記';
+    addTextBtn.onclick = createNote;
 
     const fontSizeSelect = document.createElement('select');
     fontSizeSelect.id = 'fontSize';
@@ -104,12 +151,11 @@ function displayNoteContent(note) {
     noteContent.appendChild(textareaContainer);
 }
 
-// 刪除特定 ID 的筆記
-function deleteNoteById(id) {
-    notes = notes.filter(note => note.id !== id);
-    displayNotes();
-    displayNoteContent({ id: null, content: "" }); // 清空右側筆記內容
+function deleteNoteFromNotebook(notebookIndex, noteIndex) {
+    notebooks[notebookIndex].notesLists.splice(noteIndex, 1);
+    displayNotes(); // 重新显示笔记列表
 }
+
 
 // 更改文字大小
 function changeFontSize() {
@@ -125,65 +171,9 @@ function changeFontColor() {
     noteContent.querySelector('textarea').style.color = fontColorSelect.value;
 }
 
-// 新增文字區域
-function addTextArea() {
-    const noteContent = document.getElementById('noteContent');
-    const textareaContainer = document.createElement('div');
-
-    const textarea = document.createElement('textarea');
-    textarea.rows = '20';
-    textarea.cols = '80';
-    textarea.style.fontSize = '16px'; // 初始化文字大小
-    textarea.style.color = 'black'; // 初始化文字顏色
-    textarea.value = localStorage.getItem('tempNoteContent') || ''; // 从 Local Storage 获取内容
-
-    textarea.addEventListener('input', function () {
-        localStorage.setItem('tempNoteContent', this.value); // 将内容保存到 Local Storage
-    });
-
-    const addTextBtn = document.createElement('button');
-    addTextBtn.textContent = '新增文字';
-    addTextBtn.onclick = addTextArea; // 點擊新增文字按鈕會再次新增 textarea
-
-    const deleteTextBtn = document.createElement('button');
-    deleteTextBtn.textContent = '刪除文字';
-    deleteTextBtn.style.backgroundColor = 'red'; // 設置背景色為紅色
-    deleteTextBtn.onclick = function () {
-        noteContent.removeChild(textareaContainer); // 刪除 textarea
-        localStorage.removeItem('tempNoteContent'); // 移除 Local Storage 中的内容
-    };
-
-    const fontSizeSelect = document.createElement('select');
-    fontSizeSelect.id = 'fontSize';
-    fontSizeSelect.onchange = changeFontSize;
-    const fontSizeOptions = ['12px', '16px', '20px'];
-    fontSizeOptions.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option;
-        optionElement.textContent = option;
-        fontSizeSelect.appendChild(optionElement);
-    });
-
-    const fontColorSelect = document.createElement('select');
-    fontColorSelect.id = 'fontColor';
-    fontColorSelect.onchange = changeFontColor;
-    const fontColorOptions = ['black', 'red', 'blue'];
-    fontColorOptions.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option;
-        optionElement.textContent = option;
-        fontColorSelect.appendChild(optionElement);
-    });
-
-    textareaContainer.appendChild(textarea);
-    textareaContainer.appendChild(addTextBtn);
-    textareaContainer.appendChild(deleteTextBtn); // 將刪除文字按鈕加入 textarea 容器
-    textareaContainer.appendChild(fontSizeSelect);
-    textareaContainer.appendChild(fontColorSelect);
-    noteContent.appendChild(textareaContainer);
-}
 
 // 初始化
 let editNoteId = null; // 記錄被選中的筆記
+displayNoteBooks();
 displayNotes();
 displayNoteContent('');
